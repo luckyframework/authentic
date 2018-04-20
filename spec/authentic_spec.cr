@@ -8,15 +8,6 @@ class Fallback::Action < Lucky::Action
   get "/fallback" { text "Doesn't matter" }
 end
 
-private class FakeAuthenticatable
-  include Authentic::PasswordAuthenticatable
-
-  getter id, encrypted_password
-
-  def initialize(@id : Int32 = 1, @encrypted_password : String = "abc123")
-  end
-end
-
 private class FakeEncryptor
   getter value_to_encrypt : String?
   getter cost : Int32?
