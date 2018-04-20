@@ -1,1 +1,6 @@
 language: crystal
+services:
+  - postgresql
+before_script:
+  - crystal tasks.cr -- db.create
+  - crystal tasks.cr -- db.migrate
