@@ -1,37 +1,27 @@
-# authentic
+# Authentic
 
-TODO: Write a description here
+A Crystal library for handling common authentication actions in Lucky projects.
 
 ## Installation
 
-Add this to your application's `shard.yml`:
-
-```yaml
-dependencies:
-  authentic:
-    github: [your-github-name]/authentic
-```
-
-## Usage
-
-```crystal
-require "authentic"
-```
-
-TODO: Write usage instructions here
+Authentic will be bundled in Lucky projects automatically in the next version.
 
 ## Development
 
-TODO: Write development instructions here
+* Install Lucky CLI: https://github.com/luckyframework/lucky_cli#installing-the-cli
+* `crystal deps`
+* `lucky db.create`
+* `lucky db.migrate`
+* `crystal spec`
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/authentic/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
+1.  Fork it ( https://github.com/luckyframework/authentic/fork )
+2.  Create your feature branch (git checkout -b my-new-feature)
+3.  Commit your changes (git commit -am 'Add some feature')
+4.  Push to the branch (git push origin my-new-feature)
+5.  Create a new Pull Request
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) Paul Smith - creator, maintainer
+* [paulcsmith](https://github.com/paulcsmith) Paul Smith - creator, maintainer
