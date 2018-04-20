@@ -89,8 +89,8 @@ module Authentic
   # end
   # ```
   def self.copy_and_encrypt(
-    from password_field : LuckyRecord::Field | LuckyRecord::AllowedField,
-    to encrypted_password_field : LuckyRecord::Field | LuckyRecord::AllowedField
+    from password_field : LuckyRecord::Field | LuckyRecord::FillableField,
+    to encrypted_password_field : LuckyRecord::Field | LuckyRecord::FillableField
   ) : Void
     password_field.value.try do |value|
       encrypted_password_field.value = generate_encrypted_password(value)

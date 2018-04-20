@@ -11,8 +11,7 @@ license: MIT
 dependencies:
   lucky:
     github: luckyframework/lucky
-  lucky_record:
-    github: luckyframework/lucky_record
+    branch: master
   habitat:
     github: luckyframework/habitat
 
