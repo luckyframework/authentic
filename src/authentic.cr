@@ -1,6 +1,7 @@
 require "habitat"
 require "lucky"
 require "lucky_record"
+require "crypto/bcrypt/password"
 require "./authentic/*"
 
 # Module for handling authentication
@@ -79,7 +80,7 @@ module Authentic
   # Encrypts a form password
   #
   # ```crystal
-  # class SignUpForm < User::BaseForm
+  # class SignUpForm < User::FormHelpers
   #   virtual password : String
   #
   #   def prepare
