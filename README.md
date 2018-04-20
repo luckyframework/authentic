@@ -8,10 +8,9 @@ Authentic will be bundled in Lucky projects automatically in the next version.
 
 ## Development
 
-* Install Lucky CLI: https://github.com/luckyframework/lucky_cli#installing-the-cli
 * `crystal deps`
-* `lucky db.create`
-* `lucky db.migrate`
+* `crystal taks.cr -- db.create`
+* `crystal taks.cr -- db.migrate`
 * `crystal spec`
 
 ## Contributing
