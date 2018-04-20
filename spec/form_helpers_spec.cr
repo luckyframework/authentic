@@ -1,16 +1,12 @@
 require "./spec_helper"
 
-private class TestSignInForm < LuckyRecord::VirtualForm
-  include Authentic::BaseSignInForm
+private class TestForm < LuckyRecord::VirtualForm
+  include Authentic::FormHelpers
 
+  property authenticatable : FakeAuthenticatable?
   virtual password : String
 
-  def initialize(
-    @authenticatable : FakeAuthenticatable?
-  )
-  end
-
-  private def validate_allowed_to_sign_in(user : FakeAuthenticatable?)
+  private def validate(user : FakeAuthenticatable?)
     if user && user.encrypted_password != "right"
       password.add_error "Password must be: 'right'"
     end
@@ -21,10 +17,11 @@ private class TestSignInForm < LuckyRecord::VirtualForm
   end
 end
 
-describe Authentic::BaseSignInForm do
+describe Authentic::FormHelpers do
   it "authenticatable is not returned when form is invalid" do
     authenticatable = FakeAuthenticatable.new(encrypted_password: "wrong")
-    form = TestSignInForm.new(authenticatable)
+    form = TestForm.new
+    form.authenticatable = authenticatable
 
     form.submit do |form, user|
       form.valid?.should be_false
@@ -34,7 +31,8 @@ describe Authentic::BaseSignInForm do
 
   it "authenticatable is returned when form is valid" do
     authenticatable = FakeAuthenticatable.new(encrypted_password: "right")
-    form = TestSignInForm.new(authenticatable)
+    form = TestForm.new
+    form.authenticatable = authenticatable
 
     form.submit do |form, user|
       form.valid?.should be_true
@@ -43,7 +41,7 @@ describe Authentic::BaseSignInForm do
   end
 
   it "authenticatable is not returned when it is not found" do
-    form = TestSignInForm.new(nil)
+    form = TestForm.new
 
     form.submit do |form, user|
       form.valid?.should be_true
