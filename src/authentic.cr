@@ -21,8 +21,9 @@ require "./authentic/*"
 #   # Hint: generate a key with: Random::Secure.base64(32)
 #   settings.secret_key = "32 character long secret"
 #
-#   # Optional: `encryption_cost` defaults to 10 # For faster tests set to 4 (the
-#   # lowest allowed cost). Make sure to use 10 in production
+#   # Optional: `encryption_cost` defaults to `Crypto::Bcrypt::DEFAULT_COST`
+#   # For faster tests set to 4 (the lowest allowed cost).
+#   # Make sure to use `Crypto::Bcrypt::DEFAULT_COST` in production
 #   settings.encryption_cost = 1
 #
 #   # Optional: `default_password_reset_time_limit` defaults to 15.minutes
@@ -31,7 +32,7 @@ require "./authentic/*"
 # ```
 module Authentic
   Habitat.create do
-    setting encryption_cost : Int32 = 10
+    setting encryption_cost : Int32 = Crypto::Bcrypt::DEFAULT_COST
     setting default_password_reset_time_limit : Time::Span = 15.minutes
     setting secret_key : String
   end
