@@ -45,7 +45,7 @@ module Authentic
   # Once the user signs in call `Authentic.redirect_to_originally_requested_path`
   # to redirect them back.
   def self.remember_requested_path(action : Lucky::Action) : Void
-    if action.request.method.upcase == "GET"
+    if action.request.method == "GET"
       action.session[:return_to] = action.request.resource
     end
   end
