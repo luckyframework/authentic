@@ -16,7 +16,7 @@ require "./authentic/*"
 # ```crystal
 # # Most of this is set up for you when you generate a new Lucky project.
 # # This is usually in config/authentic.cr
-# Authentic.configure do
+# Authentic.configure do |settings|
 #   # Required: You must set a secret key for encrypting password reset tokens
 #   # Hint: generate a key with: Random::Secure.base64(32)
 #   settings.secret_key = "32 character long secret"
