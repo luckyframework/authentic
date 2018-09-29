@@ -14,11 +14,11 @@ describe Authentic::ActionHelpers do
   it "can sign in a user" do
     action = build_action
     authenticatable = FakeAuthenticatable.new(id: 123)
-    action.session["user_id"].should be_nil
+    action.session.get?("user_id").should be_nil
 
     action.sign_in(authenticatable)
 
-    action.session["user_id"].should eq "123"
+    action.session.get?("user_id").should eq "123"
   end
 
   it "can sign out a user" do
@@ -27,7 +27,7 @@ describe Authentic::ActionHelpers do
 
     action.sign_out
 
-    action.session["user_id"].should be_nil
+    action.session.get?("user_id").should be_nil
   end
 
   it "returns the current user using the #find_user method" do
