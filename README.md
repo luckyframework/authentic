@@ -8,9 +8,9 @@ Authentic will be bundled in Lucky projects automatically in the next version.
 
 ## Development
 
-* `crystal deps`
-* `crystal taks.cr -- db.create`
-* `crystal taks.cr -- db.migrate`
+* `shards install`
+* `crystal tasks.cr -- db.create`
+* `crystal tasks.cr -- db.migrate`
 * `crystal spec`
 
 ## Contributing
