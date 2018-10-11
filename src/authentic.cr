@@ -46,7 +46,7 @@ module Authentic
   # to redirect them back.
   def self.remember_requested_path(action : Lucky::Action) : Void
     if action.request.method.upcase == "GET"
-      action.session[:return_to] = action.request.resource
+      action.session.set(:return_to, action.request.resource)
     end
   end
 
@@ -60,8 +60,8 @@ module Authentic
     action : Lucky::Action,
     fallback : Lucky::Action.class | Lucky::RouteHelper
   ) : Lucky::Response
-    return_to = action.session[:return_to]
-    action.session.delete(:return_to)
+    return_to = action.session.get?(:return_to)
+    action.session.unset(:return_to)
     action.redirect to: return_to || fallback
   end
 

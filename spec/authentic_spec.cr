@@ -25,27 +25,27 @@ describe Authentic do
   it "remembers the requested path if it is a GET " do
     context = ContextHelper.new(path: "/redirect_here").build
     action = Test::Action.new(context, empty_params)
-    action.session[:return_to].should be_nil
+    action.session.get?(:return_to).should be_nil
 
     Authentic.remember_requested_path(action)
 
-    action.session[:return_to].should eq "/redirect_here"
+    action.session.get?(:return_to).should eq "/redirect_here"
   end
 
   it "does not remember the requested path if it isn't a GET " do
     context = ContextHelper.new(method: "POST").build
     action = Test::Action.new(context, empty_params)
-    action.session[:return_to].should be_nil
+    action.session.get?(:return_to).should be_nil
 
     Authentic.remember_requested_path(action)
 
-    action.session[:return_to].should be_nil
+    action.session.get?(:return_to).should be_nil
   end
 
   it "redirects to originally requested path if it is set" do
     context = ContextHelper.new.build
     action = Test::Action.new(context, empty_params)
-    action.session[:return_to] = "/redirect_here"
+    action.session.set(:return_to, "/redirect_here")
 
     response = Authentic.redirect_to_originally_requested_path(
       action,

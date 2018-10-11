@@ -4,12 +4,12 @@ module Authentic::ActionHelpers(T)
 
   # Signs a user in using the browser session.
   def sign_in(authenticatable : T) : Void
-    session[SIGN_IN_KEY] = authenticatable.id.to_s
+    session.set(SIGN_IN_KEY, authenticatable.id.to_s)
   end
 
   # Sign the user out by clearing the session.
   def sign_out : Void
-    session.destroy
+    session.clear
   end
 
   # Returns the signed in user if signed in, otherwise returns `nil`
@@ -29,7 +29,7 @@ module Authentic::ActionHelpers(T)
   # This method should *not* be overridden. If you want to require a current user,
   # override the `current_user` method (note no `?`).
   def current_user? : T?
-    id = session[SIGN_IN_KEY]
+    id = session.get?(SIGN_IN_KEY)
     if id
       find_current_user(id)
     end

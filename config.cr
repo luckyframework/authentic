@@ -21,9 +21,12 @@ Lucky::StaticFileHandler.configure do |settings|
   settings.hide_from_logs = true
 end
 
-Lucky::Session::Store.configure do |settings|
-  settings.key = "anything"
-  settings.secret = "so secret"
+Lucky::SessionCookie.configure do |settings|
+  settings.key = "_authentic_session"
+end
+
+Lucky::CookieJar.configure do |settings|
+  settings.default_expiration = 1.year
 end
 
 Lucky::ErrorHandler.configure do |settings|
@@ -39,7 +42,7 @@ Lucky::RouteHelper.configure do |settings|
 end
 
 Lucky::Server.configure do |settings|
-  settings.secret_key_base = Lucky::Session::Store.settings.secret
+  settings.secret_key_base = Random::Secure.base64(32)
 end
 
 Lucky::Server.configure do |settings|
