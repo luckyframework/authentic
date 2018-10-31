@@ -21,12 +21,8 @@ Lucky::StaticFileHandler.configure do |settings|
   settings.hide_from_logs = true
 end
 
-Lucky::SessionCookie.configure do |settings|
+Lucky::Session.configure do |settings|
   settings.key = "_authentic_session"
-end
-
-Lucky::CookieJar.configure do |settings|
-  settings.default_expiration = 1.year
 end
 
 Lucky::ErrorHandler.configure do |settings|
