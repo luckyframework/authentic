@@ -61,7 +61,7 @@ module Authentic
     fallback : Lucky::Action.class | Lucky::RouteHelper
   ) : Lucky::Response
     return_to = action.session.get?(:return_to)
-    action.session.unset(:return_to)
+    action.session.delete(:return_to)
     action.redirect to: return_to || fallback
   end
 
