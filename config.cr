@@ -1,4 +1,4 @@
-require "lucky_migrator"
+require "lucky_record"
 
 database = "authentic_test"
 
@@ -11,10 +11,6 @@ LuckyRecord::Repo.configure do |settings|
       hostname: "localhost"
     )
   end
-end
-
-LuckyMigrator::Runner.configure do |settings|
-  settings.database = database
 end
 
 Lucky::StaticFileHandler.configure do |settings|
