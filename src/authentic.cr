@@ -118,7 +118,7 @@ module Authentic
     expires_in : Time::Span = Authentic.settings.default_password_reset_time_limit
   ) : String
     encryptor = Lucky::MessageEncryptor.new(secret: settings.secret_key)
-    encryptor.encrypt_and_sign("#{authenticatable.id}:#{expires_in.from_now.epoch_ms}")
+    encryptor.encrypt_and_sign("#{authenticatable.id}:#{expires_in.from_now.to_unix_ms}")
   end
 
   # Checks that the given reset token is valid
@@ -133,7 +133,7 @@ module Authentic
   ) : Bool
     encryptor = Lucky::MessageEncryptor.new(secret: settings.secret_key)
     user_id, expiration_in_ms = String.new(encryptor.verify_and_decrypt(token)).split(":")
-    Time.now.epoch_ms <= expiration_in_ms.to_i64 && user_id.to_s == authenticatable.id.to_s
+    Time.now.to_unix_ms <= expiration_in_ms.to_i64 && user_id.to_s == authenticatable.id.to_s
   end
 
   private def self.secret_key
