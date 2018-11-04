@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.27.0">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
+  <meta id="repository-name" content="github.com/luckyframework/authentic">
+  <title>Authentic - github.com/luckyframework/authentic</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/luckyframework/authentic/Authentic" data-name="authentic">
+      <a href="Authentic.html">Authentic</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/luckyframework/authentic/Authentic/ActionHelpers" data-name="authentic::actionhelpers(t)">
+      <a href="Authentic/ActionHelpers.html">ActionHelpers</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/luckyframework/authentic/Authentic/FormHelpers" data-name="authentic::formhelpers">
+      <a href="Authentic/FormHelpers.html">FormHelpers</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/luckyframework/authentic/Authentic/PasswordAuthenticatable" data-name="authentic::passwordauthenticatable">
+      <a href="Authentic/PasswordAuthenticatable.html">PasswordAuthenticatable</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/luckyframework/authentic/Authentic/Settings" data-name="authentic::settings">
+      <a href="Authentic/Settings.html">Settings</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Authentic
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Module for handling authentication</p>
+
+<h2>Configuration</h2>
+
+<p>Authentic uses <a href="https://github.com/luckyframework/habitat" target="_blank">Habitat</a> for
+configuration.</p>
+
+<p>Here's how to set it up:</p>
+
+<pre><code class="language-crystal"><span class="c"># Most of this is set up for you when you generate a new Lucky project.</span>
+<span class="c"># This is usually in config/authentic.cr</span>
+<span class="t">Authentic</span>.configure <span class="k">do</span> <span class="o">|</span>settings<span class="o">|</span>
+  <span class="c"># Required: You must set a secret key for encrypting password reset tokens</span>
+  <span class="c"># Hint: generate a key with: Random::Secure.base64(32)</span>
+  settings.secret_key <span class="o">=</span> <span class="s">&quot;32 character long secret&quot;</span>
+
+  <span class="c"># Optional: `encryption_cost` defaults to `Crypto::Bcrypt::DEFAULT_COST`</span>
+  <span class="c"># For faster tests set to 4 (the lowest allowed cost).</span>
+  <span class="c"># Make sure to use `Crypto::Bcrypt::DEFAULT_COST` in production</span>
+  settings.encryption_cost <span class="o">=</span> <span class="n">1</span>
+
+  <span class="c"># Optional: `default_password_reset_time_limit` defaults to 15.minutes</span>
+  settings.default_password_reset_time_limit <span class="o">=</span> <span class="n">1</span>.day
+<span class="k">end</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">Habitat::SettingsHelpers</li>
+  
+    <li class="other-type">Habitat::TempConfig</li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic/action_helpers.cr#L2" target="_blank">
+        authentic/action_helpers.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic/version.cr#L1" target="_blank">
+        authentic/version.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L33" target="_blank">
+        authentic.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="HABITAT_SETTINGS">
+        <strong>HABITAT_SETTINGS</strong> = <code>[encryption_cost : <span class="t">Int32</span> <span class="o">=</span> <span class="t">Crypto</span><span class="t">::</span><span class="t">Bcrypt</span><span class="t">::</span><span class="t">DEFAULT_COST</span>, default_password_reset_time_limit : <span class="t">Time</span><span class="t">::</span><span class="t">Span</span> <span class="o">=</span> <span class="n">15</span>.minutes, secret_key : <span class="t">String</span>] <span class="k">of</span> <span class="t">Crystal</span><span class="t">::</span><span class="t">Macros</span><span class="t">::</span><span class="t">TypeDeclaration</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.2.0-rc1&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#configure%28%26block%29-class-method" class="signature"><strong>.configure</strong>(&block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#copy_and_encrypt%28frompassword_field%3ALuckyRecord%3A%3AField%7CLuckyRecord%3A%3AFillableField%2Ctoencrypted_password_field%3ALuckyRecord%3A%3AField%7CLuckyRecord%3A%3AFillableField%29%3AVoid-class-method" class="signature"><strong>.copy_and_encrypt</strong>(from password_field : LuckyRecord::Field | LuckyRecord::FillableField, to encrypted_password_field : LuckyRecord::Field | LuckyRecord::FillableField) : Void</a>
+        
+          <div class="summary"><p>Encrypts a form password</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#correct_password%3F%28authenticatable%3AAuthentic%3A%3APasswordAuthenticatable%2Cpassword_value%3AString%29%3ABool-class-method" class="signature"><strong>.correct_password?</strong>(authenticatable : Authentic::PasswordAuthenticatable, password_value : String) : Bool</a>
+        
+          <div class="summary"><p>Checks whether the password is correct</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#generate_encrypted_password%28password_value%3AString%2Cencryptor%3DCrypto%3A%3ABcrypt%3A%3APassword%29%3AString-class-method" class="signature"><strong>.generate_encrypted_password</strong>(password_value : String, encryptor = <span class="t">Crypto</span><span class="t">::</span><span class="t">Bcrypt</span><span class="t">::</span><span class="t">Password</span>) : String</a>
+        
+          <div class="summary"><p>Generates a encrypted password from a password string</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#generate_password_reset_token%28authenticatable%3AAuthentic%3A%3APasswordAuthenticatable%2Cexpires_in%3ATime%3A%3ASpan%3DAuthentic.settings.default_password_reset_time_limit%29%3AString-class-method" class="signature"><strong>.generate_password_reset_token</strong>(authenticatable : Authentic::PasswordAuthenticatable, expires_in : Time::Span = <span class="t">Authentic</span>.settings.default_password_reset_time_limit) : String</a>
+        
+          <div class="summary"><p>Generates a password reset token</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#redirect_to_originally_requested_path%28action%3ALucky%3A%3AAction%2Cfallback%3ALucky%3A%3AAction.class%7CLucky%3A%3ARouteHelper%29%3ALucky%3A%3AResponse-class-method" class="signature"><strong>.redirect_to_originally_requested_path</strong>(action : Lucky::Action, fallback : Lucky::Action.class | Lucky::RouteHelper) : Lucky::Response</a>
+        
+          <div class="summary"><p>After successful sign in, call this to redirect back to the originally request path</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remember_requested_path%28action%3ALucky%3A%3AAction%29%3AVoid-class-method" class="signature"><strong>.remember_requested_path</strong>(action : Lucky::Action) : Void</a>
+        
+          <div class="summary"><p>Remember the originally requested path if it is a GET</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#settings-class-method" class="signature"><strong>.settings</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#valid_password_reset_token%3F%28authenticatable%3AAuthentic%3A%3APasswordAuthenticatable%2Ctoken%3AString%29%3ABool-class-method" class="signature"><strong>.valid_password_reset_token?</strong>(authenticatable : Authentic::PasswordAuthenticatable, token : String) : Bool</a>
+        
+          <div class="summary"><p>Checks that the given reset token is valid</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#settings-instance-method" class="signature"><strong>#settings</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="configure(&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>configure</strong>(&block)
+
+        <a class="method-permalink" href="#configure%28%26block%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="copy_and_encrypt(frompassword_field:LuckyRecord::Field|LuckyRecord::FillableField,toencrypted_password_field:LuckyRecord::Field|LuckyRecord::FillableField):Void-class-method">
+      <div class="signature">
+        
+        def self.<strong>copy_and_encrypt</strong>(from password_field : LuckyRecord::Field | LuckyRecord::FillableField, to encrypted_password_field : LuckyRecord::Field | LuckyRecord::FillableField) : Void
+
+        <a class="method-permalink" href="#copy_and_encrypt%28frompassword_field%3ALuckyRecord%3A%3AField%7CLuckyRecord%3A%3AFillableField%2Ctoencrypted_password_field%3ALuckyRecord%3A%3AField%7CLuckyRecord%3A%3AFillableField%29%3AVoid-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Encrypts a form password</p>
+
+<pre><code class="language-crystal"><span class="k">class</span> <span class="t">SignUpForm</span> <span class="o">&lt;</span> <span class="t">User</span><span class="t">::</span><span class="t">FormHelpers</span>
+  virtual password : <span class="t">String</span>
+
+  <span class="k">def</span> <span class="m">prepare</span>
+    <span class="c"># Encrypt the `password` and copy the value to the `encrypted_password` field</span>
+    <span class="t">Authentic</span>.copy_and_encrypt password, to: encrypted_password
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L93" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="correct_password?(authenticatable:Authentic::PasswordAuthenticatable,password_value:String):Bool-class-method">
+      <div class="signature">
+        
+        def self.<strong>correct_password?</strong>(authenticatable : <a href="Authentic/PasswordAuthenticatable.html">Authentic::PasswordAuthenticatable</a>, password_value : String) : Bool
+
+        <a class="method-permalink" href="#correct_password%3F%28authenticatable%3AAuthentic%3A%3APasswordAuthenticatable%2Cpassword_value%3AString%29%3ABool-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Checks whether the password is correct</p>
+
+<pre><code class="language-crystal">user <span class="o">=</span> <span class="t">UserQuery</span>.first
+<span class="t">Authentic</span>.correct_password?(user, <span class="s">&quot;my-password&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="generate_encrypted_password(password_value:String,encryptor=Crypto::Bcrypt::Password):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>generate_encrypted_password</strong>(password_value : String, encryptor = <span class="t">Crypto</span><span class="t">::</span><span class="t">Bcrypt</span><span class="t">::</span><span class="t">Password</span>) : String
+
+        <a class="method-permalink" href="#generate_encrypted_password%28password_value%3AString%2Cencryptor%3DCrypto%3A%3ABcrypt%3A%3APassword%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Generates a encrypted password from a password string</p>
+
+<p>By default it uses Bcrypt to encrypt the password.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L105" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="generate_password_reset_token(authenticatable:Authentic::PasswordAuthenticatable,expires_in:Time::Span=Authentic.settings.default_password_reset_time_limit):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>generate_password_reset_token</strong>(authenticatable : <a href="Authentic/PasswordAuthenticatable.html">Authentic::PasswordAuthenticatable</a>, expires_in : Time::Span = <span class="t">Authentic</span>.settings.default_password_reset_time_limit) : String
+
+        <a class="method-permalink" href="#generate_password_reset_token%28authenticatable%3AAuthentic%3A%3APasswordAuthenticatable%2Cexpires_in%3ATime%3A%3ASpan%3DAuthentic.settings.default_password_reset_time_limit%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Generates a password reset token</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L116" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="redirect_to_originally_requested_path(action:Lucky::Action,fallback:Lucky::Action.class|Lucky::RouteHelper):Lucky::Response-class-method">
+      <div class="signature">
+        
+        def self.<strong>redirect_to_originally_requested_path</strong>(action : Lucky::Action, fallback : Lucky::Action.class | Lucky::RouteHelper) : Lucky::Response
+
+        <a class="method-permalink" href="#redirect_to_originally_requested_path%28action%3ALucky%3A%3AAction%2Cfallback%3ALucky%3A%3AAction.class%7CLucky%3A%3ARouteHelper%29%3ALucky%3A%3AResponse-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>After successful sign in, call this to redirect back to the originally request path</p>
+
+<p>First call <code><a href="Authentic.html#remember_requested_path%28action%3ALucky%3A%3AAction%29%3AVoid-class-method">Authentic.remember_requested_path</a></code> if the user is not signed in.
+Then call this to redirect them. A <code>fallback</code> action is required. The
+<code>fallback</code> action will be used if user was not trying to access a protected
+page before sign in.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remember_requested_path(action:Lucky::Action):Void-class-method">
+      <div class="signature">
+        
+        def self.<strong>remember_requested_path</strong>(action : Lucky::Action) : Void
+
+        <a class="method-permalink" href="#remember_requested_path%28action%3ALucky%3A%3AAction%29%3AVoid-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Remember the originally requested path if it is a GET</p>
+
+<p>Call this if the user requested an action that requires sign in.
+It will remember the path they requested if it is a get.</p>
+
+<p>Once the user signs in call <code><a href="Authentic.html#redirect_to_originally_requested_path%28action%3ALucky%3A%3AAction%2Cfallback%3ALucky%3A%3AAction.class%7CLucky%3A%3ARouteHelper%29%3ALucky%3A%3AResponse-class-method">Authentic.redirect_to_originally_requested_path</a></code>
+to redirect them back.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="settings-class-method">
+      <div class="signature">
+        
+        def self.<strong>settings</strong>
+
+        <a class="method-permalink" href="#settings-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="valid_password_reset_token?(authenticatable:Authentic::PasswordAuthenticatable,token:String):Bool-class-method">
+      <div class="signature">
+        
+        def self.<strong>valid_password_reset_token?</strong>(authenticatable : <a href="Authentic/PasswordAuthenticatable.html">Authentic::PasswordAuthenticatable</a>, token : String) : Bool
+
+        <a class="method-permalink" href="#valid_password_reset_token%3F%28authenticatable%3AAuthentic%3A%3APasswordAuthenticatable%2Ctoken%3AString%29%3ABool-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Checks that the given reset token is valid</p>
+
+<p>A token is valid if the id matches the authenticatable and the token is not
+expired.</p>
+
+<p>To generate a token see <code><a href="Authentic.html#generate_password_reset_token%28authenticatable%3AAuthentic%3A%3APasswordAuthenticatable%2Cexpires_in%3ATime%3A%3ASpan%3DAuthentic.settings.default_password_reset_time_limit%29%3AString-class-method">Authentic.generate_password_reset_token</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L130" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="settings-instance-method">
+      <div class="signature">
+        
+        def <strong>settings</strong>
+
+        <a class="method-permalink" href="#settings-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.27.0">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/luckyframework/authentic">
+  <title>Authentic::FormHelpers - github.com/luckyframework/authentic</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/luckyframework/authentic/Authentic" data-name="authentic">
+      <a href="../Authentic.html">Authentic</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/luckyframework/authentic/Authentic/ActionHelpers" data-name="authentic::actionhelpers(t)">
+      <a href="../Authentic/ActionHelpers.html">ActionHelpers</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/luckyframework/authentic/Authentic/FormHelpers" data-name="authentic::formhelpers">
+      <a href="../Authentic/FormHelpers.html">FormHelpers</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/luckyframework/authentic/Authentic/PasswordAuthenticatable" data-name="authentic::passwordauthenticatable">
+      <a href="../Authentic/PasswordAuthenticatable.html">PasswordAuthenticatable</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/luckyframework/authentic/Authentic/Settings" data-name="authentic::settings">
+      <a href="../Authentic/Settings.html">Settings</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Authentic::FormHelpers
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Base form class for setting up and validating an Authentic form</p>
+
+<p>This is typically used for a sign in form and a password reset request form.</p>
+
+<p>To see an example, Lucky projects are generated with a <code>SignInForm</code> and
+<code>PasswordResetRequestForm</code> that use this.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic/form_helpers.cr#L7" target="_blank">
+        authentic/form_helpers.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#find_authenticatable-instance-method" class="signature"><strong>#find_authenticatable</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#submit%28%26block%29-instance-method" class="signature"><strong>#submit</strong>(&block)</a>
+        
+          <div class="summary"><p>Run validations and yield the form and the authenticatable if valid</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#validate%28authenticatable%29-instance-method" class="signature"><strong>#validate</strong>(authenticatable)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="find_authenticatable-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>find_authenticatable</strong>
+
+        <a class="method-permalink" href="#find_authenticatable-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic/form_helpers.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="submit(&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>submit</strong>(&block)
+
+        <a class="method-permalink" href="#submit%28%26block%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Run validations and yield the form and the authenticatable if valid</p>
+
+<p>When you call <code><a href="../Authentic/FormHelpers.html#submit%28%26block%29-instance-method">#submit</a></code> the form will find the authenticatable, pass it to
+your form's <code><a href="../Authentic/FormHelpers.html#validate%28authenticatable%29-instance-method">#validate</a></code> method and then yield the form and the
+<code>authenticatable</code> if the <code>authenticatable</code> is found and the form is valid.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic/form_helpers.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="validate(authenticatable)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>validate</strong>(authenticatable)
+
+        <a class="method-permalink" href="#validate%28authenticatable%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/084dd988c9d3493d68148d3ac1d56cb41b91a932/src/authentic/form_helpers.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
