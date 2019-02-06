@@ -8,7 +8,9 @@ Avram::Repo.configure do |settings|
   else
     settings.url = Avram::PostgresURL.build(
       database: database,
-      hostname: "localhost"
+      hostname: "db",
+      username: "lucky",
+      password: "developer"
     )
   end
 end

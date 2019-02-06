@@ -1,19 +1,7 @@
-language: crystal
-services:
-  - postgresql
-before_script:
-  - crystal tasks.cr -- db.create
-  - crystal tasks.cr -- db.migrate
+language: minimal
+before_install:
+  - scripts/setup
 script:
-  - crystal spec
-  - crystal tool format src spec --check
-  - crystal docs
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  project_name: authentic
-  on:
-    branch: master
-  local_dir: docs
+  - scripts/test
+notifications:
+  email: false
