@@ -1,12 +1,12 @@
-require "lucky_record"
+require "avram"
 
 database = "authentic_test"
 
-LuckyRecord::Repo.configure do |settings|
+Avram::Repo.configure do |settings|
   if ENV["DATABASE_URL"]?
     settings.url = ENV["DATABASE_URL"]
   else
-    settings.url = LuckyRecord::PostgresURL.build(
+    settings.url = Avram::PostgresURL.build(
       database: database,
       hostname: "localhost"
     )
