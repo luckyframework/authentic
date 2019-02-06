@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-private class TestForm < LuckyRecord::VirtualForm
+private class TestForm < Avram::VirtualForm
   include Authentic::FormHelpers
 
   property authenticatable : FakeAuthenticatable?
