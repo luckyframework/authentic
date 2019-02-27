@@ -27,8 +27,8 @@ Lucky::ErrorHandler.configure do |settings|
   settings.show_debug_output = true
 end
 
-Lucky::LogHandler.configure do |settings|
-  settings.show_timestamps = false
+Lucky.configure do |settings|
+  settings.logger = Dexter::Logger.new(nil)
 end
 
 Lucky::RouteHelper.configure do |settings|

@@ -12,4 +12,6 @@ RUN apt-get update && \
 
 RUN mkdir /data
 WORKDIR /data
+COPY shard.* /data/
+RUN shards install
 ADD . /data

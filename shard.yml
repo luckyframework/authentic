@@ -1,20 +1,20 @@
 name: authentic
-version: 0.2.0
+version: 0.3.0
 
 authors:
   - Paul Smith <paulcsmith0218@gmail.com>
 
-crystal: 0.27
+crystal: 0.27.2
 
 license: MIT
 
 dependencies:
   lucky:
     github: luckyframework/lucky
-    branch: master
+    version: ~> 0.13
   habitat:
     github: luckyframework/habitat
-    version: ~> 0.4.0
+    version: ~> 0.4
 
 development_dependencies:
   avram:
