@@ -15,6 +15,10 @@ Avram::Repo.configure do |settings|
   end
 end
 
+Lucky::ForceSSLHandler.configure do |settings|
+  settings.enabled = false
+end
+
 Lucky::StaticFileHandler.configure do |settings|
   settings.hide_from_logs = true
 end
