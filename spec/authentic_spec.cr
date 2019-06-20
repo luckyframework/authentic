@@ -87,7 +87,7 @@ describe Authentic do
     Authentic.correct_password?(authenticatable, "incorrect password").should be_false
   end
 
-  it "can save an encrypted password to a Avram::Field" do
+  it "can save an encrypted password to a Avram::Attribute" do
     password = build_field(value: "password")
     encrypted_password = build_field(value: "")
 
@@ -126,7 +126,7 @@ private def empty_params
 end
 
 private def build_field(value)
-  Avram::Field.new(
+  Avram::Attribute.new(
     name: :does_not_matter,
     value: value,
     param: nil,

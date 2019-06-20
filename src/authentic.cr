@@ -91,8 +91,8 @@ module Authentic
   # end
   # ```
   def self.copy_and_encrypt(
-    from password_field : Avram::Field | Avram::FillableField,
-    to encrypted_password_field : Avram::Field | Avram::FillableField
+    from password_field : Avram::Attribute | Avram::PermittedAttribute,
+    to encrypted_password_field : Avram::Attribute | Avram::PermittedAttribute
   ) : Void
     password_field.value.try do |value|
       encrypted_password_field.value = generate_encrypted_password(value)
