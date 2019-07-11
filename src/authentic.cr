@@ -82,7 +82,7 @@ module Authentic
   #
   # ```crystal
   # class SignUpForm < User::FormHelpers
-  #   virtual password : String
+  #   attribute password : String
   #
   #   def prepare
   #     # Encrypt the `password` and copy the value to the `encrypted_password` field
