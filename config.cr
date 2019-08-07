@@ -2,7 +2,10 @@ require "avram"
 
 database = "authentic_test"
 
-Avram::Repo.configure do |settings|
+class AppDatabase < Avram::Database
+end
+
+AppDatabase.configure do |settings|
   if ENV["DATABASE_URL"]?
     settings.url = ENV["DATABASE_URL"]
   else
@@ -15,12 +18,12 @@ Avram::Repo.configure do |settings|
   end
 end
 
-Lucky::ForceSSLHandler.configure do |settings|
-  settings.enabled = false
+Avram.configure do |settings|
+  settings.database_to_migrate = AppDatabase
 end
 
-Lucky::StaticFileHandler.configure do |settings|
-  settings.hide_from_logs = true
+Lucky::ForceSSLHandler.configure do |settings|
+  settings.enabled = false
 end
 
 Lucky::Session.configure do |settings|

@@ -4,5 +4,5 @@ require "../src/authentic"
 require "./support/**"
 
 Spec.before_each do
-  Avram::Repo.truncate
+  AppDatabase.truncate
 end
