@@ -10,13 +10,13 @@ license: MIT
 
 dependencies:
   lucky:
-    github: luckyframework/lucky
-    version: ~> 0.17.0
+    github: bcardiff/lucky
+    branch: crystal/0.31.0
   habitat:
     github: luckyframework/habitat
     version: ~> 0.4
 
 development_dependencies:
   avram:
-    github: luckyframework/avram
-    version: ~> 0.11.0
+    github: bcardiff/avram
+    branch: crystal/0.31.0
