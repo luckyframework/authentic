@@ -35,5 +35,5 @@ module Authentic::ActionHelpers(T)
     end
   end
 
-  abstract def find_current_user(id) : T
+  abstract def find_current_user(id) : T?
 end
