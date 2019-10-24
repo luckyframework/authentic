@@ -81,10 +81,12 @@ module Authentic
   # Encrypts a form password
   #
   # ```crystal
-  # class SignUpForm < User::FormHelpers
+  # class SignUpUser < User::SaveOperation
   #   attribute password : String
   #
-  #   def prepare
+  #   before_save encrypt_password
+  #
+  #   def encrypt_password
   #     # Encrypt the `password` and copy the value to the `encrypted_password` field
   #     Authentic.copy_and_encrypt password, to: encrypted_password
   #   end
