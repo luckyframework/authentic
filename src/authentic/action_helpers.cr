@@ -14,7 +14,7 @@ module Authentic::ActionHelpers(T)
 
   # Returns the signed in user if signed in, otherwise returns `nil`
   #
-  # This method is often overriden by different modules/pipes. For example,
+  # This method is often overridden by different modules/pipes. For example,
   # When sign in is required this method is typically overridden by calling
   # `not_nil!` since the user will always be returned.
   #
