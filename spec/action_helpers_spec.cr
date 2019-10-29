@@ -5,7 +5,7 @@ class Authentication::TestAction < Lucky::Action
 
   get "/test-auth" { text "Doesn't matter" }
 
-  private def find_current_user(id)
+  private def find_current_user(id) : FakeAuthenticatable
     FakeAuthenticatable.new(id: id.to_i)
   end
 end

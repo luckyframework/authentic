@@ -1,8 +1,9 @@
 class FakeAuthenticatable
   include Authentic::PasswordAuthenticatable
 
-  getter id, encrypted_password
+  getter id : Int32
+  getter encrypted_password : String?
 
-  def initialize(@id : Int32 = 1, @encrypted_password : String = "abc123")
+  def initialize(@id = 1, @encrypted_password = "abc123")
   end
 end
