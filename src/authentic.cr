@@ -75,7 +75,13 @@ module Authentic
     authenticatable : Authentic::PasswordAuthenticatable,
     password_value : String
   ) : Bool
-    Crypto::Bcrypt::Password.new(authenticatable.encrypted_password) == password_value
+    encrypted_password = authenticatable.encrypted_password
+
+    if encrypted_password
+      Crypto::Bcrypt::Password.new(encrypted_password).verify(password_value)
+    else
+      false
+    end
   end
 
   # Encrypts a form password
@@ -135,7 +141,7 @@ module Authentic
   ) : Bool
     encryptor = Lucky::MessageEncryptor.new(secret: settings.secret_key)
     user_id, expiration_in_ms = String.new(encryptor.verify_and_decrypt(token)).split(":")
-    Time.now.to_unix_ms <= expiration_in_ms.to_i64 && user_id.to_s == authenticatable.id.to_s
+    Time.utc.to_unix_ms <= expiration_in_ms.to_i64 && user_id.to_s == authenticatable.id.to_s
   end
 
   private def self.secret_key

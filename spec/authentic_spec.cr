@@ -82,9 +82,11 @@ describe Authentic do
   it "can check whether the given password is correct or not" do
     encrypted_password = Authentic.generate_encrypted_password("password")
     authenticatable = FakeAuthenticatable.new(encrypted_password: encrypted_password)
+    authenticatable_without_password = FakeAuthenticatable.new(encrypted_password: nil)
 
     Authentic.correct_password?(authenticatable, "password").should be_true
     Authentic.correct_password?(authenticatable, "incorrect password").should be_false
+    Authentic.correct_password?(authenticatable_without_password, "anything").should be_false
   end
 
   it "can save an encrypted password to a Avram::Attribute" do
