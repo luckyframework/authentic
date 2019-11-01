@@ -1,7 +1,8 @@
 FROM crystallang/crystal:0.31.1
+WORKDIR /data
 
 RUN apt-get update && \
-  apt-get install -y libgconf-2-4 build-essential curl libreadline-dev libevent-dev libssl-dev libxml2-dev libyaml-dev libgmp-dev git postgresql postgresql-contrib && \
+  apt-get install -y libgconf-2-4 curl libreadline-dev postgresql postgresql-contrib && \
   # Lucky cli
   git clone https://github.com/luckyframework/lucky_cli --branch v0.12.0 --depth 1 /usr/local/lucky_cli && \
   cd /usr/local/lucky_cli && \
@@ -10,8 +11,6 @@ RUN apt-get update && \
   # Cleanup leftovers
   apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN mkdir /data
-WORKDIR /data
 COPY shard.* /data/
 RUN shards install
-ADD . /data
+COPY . /data
