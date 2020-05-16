@@ -34,10 +34,6 @@ Lucky::ErrorHandler.configure do |settings|
   settings.show_debug_output = true
 end
 
-Lucky.configure do |settings|
-  settings.logger = Dexter::Logger.new(nil)
-end
-
 Lucky::RouteHelper.configure do |settings|
   settings.base_uri = "example.com"
 end
