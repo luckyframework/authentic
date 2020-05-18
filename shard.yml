@@ -4,14 +4,14 @@ version: 0.5.4
 authors:
   - Paul Smith <paulcsmith0218@gmail.com>
 
-crystal: 0.33.0
+crystal: 0.34.0
 
 license: MIT
 
 dependencies:
   lucky:
     github: luckyframework/lucky
-    version: ~> 0.18
+    version: ~> 0.21.1
   habitat:
     github: luckyframework/habitat
     version: ~> 0.4.0
@@ -19,4 +19,3 @@ dependencies:
 development_dependencies:
   avram:
     github: luckyframework/avram
-    branch: master
