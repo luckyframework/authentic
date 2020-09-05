@@ -19,3 +19,7 @@ dependencies:
 development_dependencies:
   avram:
     github: luckyframework/avram
+    version: ~> 0.16.0
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 0.13.2

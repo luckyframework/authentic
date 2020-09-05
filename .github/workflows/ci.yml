@@ -1,0 +1,60 @@
+name: Authentic CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: "*"
+
+jobs:
+  check_format:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:0.35.1
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install shards
+        run: shards install
+      - name: Format
+        run: crystal tool format --check src spec config
+  ameba:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:0.35.1
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install shards
+        run: shards install
+      - name: Analyze
+        run: ./bin/ameba
+  specs:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:0.35.1
+    services:
+      postgres:
+        image: postgres:10-alpine
+        env:
+          POSTGRES_USER: lucky
+          POSTGRES_PASSWORD: developer
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Install PostgreSQL client
+        run: |
+          apt-get update
+          apt-get -yqq install libpq-dev postgresql-client
+      - uses: actions/checkout@v2
+      - name: Install shards
+        run: shards install
+      - name: Cache Crystal
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/crystal
+          key: ${{ runner.os }}-crystal
+      - name: Run tests
+        run: crystal spec
+        env:
+          DATABASE_URL: postgres://lucky:developer@postgres:5432/authentic_test
