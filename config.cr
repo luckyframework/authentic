@@ -7,9 +7,9 @@ end
 
 AppDatabase.configure do |settings|
   if ENV["DATABASE_URL"]?
-    settings.url = ENV["DATABASE_URL"]
+    settings.credentials = Avram::Credentials.parse(ENV["DATABASE_URL"])
   else
-    settings.url = Avram::PostgresURL.build(
+    settings.credentials = Avram::Credentials.new(
       database: database,
       hostname: "db",
       username: "lucky",
