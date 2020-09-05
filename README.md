@@ -4,11 +4,11 @@ A Crystal library for handling common authentication actions in Lucky projects.
 
 ## Installation
 
-Authentic will be bundled in Lucky projects automatically in the next version.
+Authentic is bundled in Lucky projects automatically.
 
 ## Contributing
 
-1. Fork it ( https://github.com/luckyframework/avram/fork )
+1. Fork it ( https://github.com/luckyframework/authentic/fork )
 1. Create your feature branch (git checkout -b my-new-feature)
 1. Install docker and docker-compose: https://docs.docker.com/compose/install/
 1. Run `scripts/setup`
