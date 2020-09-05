@@ -62,6 +62,8 @@ jobs:
         run: |
           lucky db.create
           lucky db.migrate
+        env:
+          DATABASE_URL: postgres://lucky:developer@postgres:5432/authentic_test
       - name: Run tests
         run: crystal spec
         env:
