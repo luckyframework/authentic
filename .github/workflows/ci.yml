@@ -54,6 +54,10 @@ jobs:
         with:
           path: ~/.cache/crystal
           key: ${{ runner.os }}-crystal
+      - name: Setup Database
+        run: |
+          lucky db.create
+          lucky db.migrate
       - name: Run tests
         run: crystal spec
         env:
