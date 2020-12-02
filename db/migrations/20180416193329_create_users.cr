@@ -4,6 +4,12 @@ class CreateUsers::V20180416193329 < Avram::Migrator::Migration::V1
       add email : String, unique: true
       add encrypted_password : String
     end
+    execute <<-SQL
+    CREATE EXTENSION IF NOT EXISTS citext;
+SQL
+    execute <<-SQL
+    ALTER TABLE users ALTER COLUMN email TYPE citext;
+SQL
   end
 
   def rollback
