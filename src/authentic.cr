@@ -13,7 +13,7 @@ require "./authentic/*"
 #
 # Here's how to set it up:
 #
-# ```crystal
+# ```
 # # Most of this is set up for you when you generate a new Lucky project.
 # # This is usually in config/authentic.cr
 # Authentic.configure do |settings|
@@ -67,7 +67,7 @@ module Authentic
 
   # Checks whether the password is correct
   #
-  # ```crystal
+  # ```
   # user = UserQuery.first
   # Authentic.correct_password?(user, "my-password")
   # ```
@@ -86,7 +86,7 @@ module Authentic
 
   # Encrypts a form password
   #
-  # ```crystal
+  # ```
   # class SignUpUser < User::SaveOperation
   #   attribute password : String
   #
