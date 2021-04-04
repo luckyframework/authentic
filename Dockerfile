@@ -13,12 +13,6 @@ RUN apt-get install -y libgconf-2-4 \
   git \
   postgresql \
   postgresql-contrib
-# Lucky cli
-RUN git clone https://github.com/luckyframework/lucky_cli --branch v0.25.0 --depth 1 /usr/local/lucky_cli
-WORKDIR /usr/local/lucky_cli
-RUN shards install && crystal build src/lucky.cr -o /usr/local/bin/lucky
-# Cleanup leftovers
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir /data
 WORKDIR /data

@@ -8,9 +8,8 @@ docker-compose up -d
 
 COMPOSE="docker-compose exec app"
 
-printf "\nRunning tasks\n\n"
-$COMPOSE lucky db.create
-$COMPOSE lucky db.migrate
+printf "\nSetting up database\n\n"
+$COMPOSE crystal tasks.cr db.setup
 
 printf "\nRunning specs\n\n"
 $COMPOSE crystal spec
