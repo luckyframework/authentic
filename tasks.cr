@@ -1,6 +1,6 @@
-require "lucky_cli"
+require "lucky_task"
 require "./src/authentic"
 require "./config"
 require "./db/migrations/*"
 
-LuckyCli::Runner.run
+LuckyTask::Runner.run
