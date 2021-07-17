@@ -12,15 +12,17 @@ jobs:
       fail-fast: false
       matrix:
         crystal_version:
-          - 0.36.1
           - 1.0.0
+          - 1.1.0
         experimental:
           - false
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
-    container: crystallang/crystal:${{ matrix.crystal_version }}
     steps:
       - uses: actions/checkout@v1
+      - uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: ${{matrix.crystal_version}}
       - name: Install shards
         run: shards install
       - name: Format
@@ -32,13 +34,12 @@ jobs:
       fail-fast: false
       matrix:
         crystal_version:
-          - 0.36.1
           - 1.0.0
+          - 1.1.0
         experimental:
           - false
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
-    container: crystallang/crystal:${{ matrix.crystal_version }}
     services:
       postgres:
         image: postgres:10-alpine
@@ -50,23 +51,17 @@ jobs:
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - name: Install PostgreSQL client
-        run: |
-          apt-get update
-          apt-get -yqq install libpq-dev postgresql-client
       - uses: actions/checkout@v2
-      - name: Cache Crystal
-        uses: actions/cache@v1
+      - uses: crystal-lang/install-crystal@v1
         with:
-          path: ~/.cache/crystal
-          key: ${{ runner.os }}-crystal
+          crystal: ${{matrix.crystal_version}}
       - name: Install shards
         run: shards install
       - name: Setup Database
         run: crystal tasks.cr db.setup
         env:
-          DATABASE_URL: postgres://lucky:developer@postgres:5432/authentic_test
+          DATABASE_URL: postgres://lucky:developer@localhost:5432/authentic_test
       - name: Run tests
         run: crystal spec
         env:
-          DATABASE_URL: postgres://lucky:developer@postgres:5432/authentic_test
+          DATABASE_URL: postgres://lucky:developer@localhost:5432/authentic_test
