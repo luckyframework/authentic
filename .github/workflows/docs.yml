@@ -7,8 +7,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    container:
-      image: crystallang/crystal:0.36.1
+    - uses: crystal-lang/install-crystal@v1
+      with:
+        crystal: 1.0.0
     steps:
       - uses: actions/checkout@v2
         with:
