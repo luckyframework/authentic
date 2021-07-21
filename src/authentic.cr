@@ -44,7 +44,7 @@ module Authentic
   #
   # Once the user signs in call `Authentic.redirect_to_originally_requested_path`
   # to redirect them back.
-  def self.remember_requested_path(action : Lucky::Action) : Void
+  def self.remember_requested_path(action : Lucky::Action) : Nil
     if action.request.method.upcase == "GET"
       action.session.set(:return_to, action.request.resource)
     end
@@ -101,7 +101,7 @@ module Authentic
   def self.copy_and_encrypt(
     from password_field : Avram::Attribute | Avram::PermittedAttribute,
     to encrypted_password_field : Avram::Attribute | Avram::PermittedAttribute
-  ) : Void
+  ) : Nil
     password_field.value.try do |value|
       encrypted_password_field.value = generate_encrypted_password(value)
     end
