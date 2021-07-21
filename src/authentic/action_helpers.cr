@@ -24,15 +24,20 @@ module Authentic::ActionHelpers(T)
     current_user?
   end
 
+  # TODO: https://github.com/luckyframework/lucky/issues/1396
+  @__current_user : T? = nil
+
   # Return the signed in user if signed in, otherwise returns `nil`
   #
   # This method should *not* be overridden. If you want to require a current user,
   # override the `current_user` method (note no `?`).
-  memoize def current_user? : T?
-    id = session.get?(SIGN_IN_KEY)
-    if id
-      find_current_user(id)
-    end
+  def current_user? : T?
+    @__current_user ||= ->{
+      id = session.get?(SIGN_IN_KEY)
+      if id
+        find_current_user(id)
+      end
+    }.call
   end
 
   abstract def find_current_user(id) : T?
