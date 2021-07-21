@@ -34,7 +34,22 @@ module Authentic
   Habitat.create do
     setting encryption_cost : Int32 = Crypto::Bcrypt::DEFAULT_COST
     setting default_password_reset_time_limit : Time::Span = 15.minutes
-    setting secret_key : String
+    setting secret_key : String, validation: :validate_length
+  end
+
+  def self.validate_length(value : String)
+    if value.bytesize != 32
+      Habitat.raise_validation_error <<-ERROR
+
+      Authentic secret_key setting must be 32 bytes long.
+
+      Try this...
+
+        ▸ Generate a new key with `lucky gen.secret_key`
+        ▸ Set the secret_key value in your Authentic.configure block
+
+      ERROR
+    end
   end
 
   # Remember the originally requested path if it is a GET
@@ -145,9 +160,6 @@ module Authentic
   end
 
   private def self.secret_key
-    if settings.secret_key.length != 32
-      raise "Authentic secret_key must be 32 characters long"
-    end
-    settings.secret_key
+    {% raise "Authentic.secret_key has been removed. Use Authentic.settings.secret_key instead." %}
   end
 end
