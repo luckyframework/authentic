@@ -170,21 +170,21 @@ configuration.</p>
   </h2>
   
     
-      <a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L33" target="_blank">
+      <a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L33" target="_blank">
         authentic.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic/action_helpers.cr#L2" target="_blank">
+      <a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic/action_helpers.cr#L2" target="_blank">
         authentic/action_helpers.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic/version.cr#L1" target="_blank">
+      <a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic/version.cr#L1" target="_blank">
         authentic/version.cr
       </a>
     
@@ -206,7 +206,7 @@ configuration.</p>
   <dl>
     
       <dt class="entry-const" id="HABITAT_SETTINGS">
-        <strong>HABITAT_SETTINGS</strong> = <code>[{decl: encryption_cost : <span class="t">Int32</span> <span class="o">=</span> <span class="t">Crypto</span><span class="t">::</span><span class="t">Bcrypt</span><span class="t">::</span><span class="t">DEFAULT_COST</span>, example: <span class="n">nil</span>, validation: <span class="n">nil</span>}, {decl: default_password_reset_time_limit : <span class="t">Time</span><span class="t">::</span><span class="t">Span</span> <span class="o">=</span> <span class="n">15</span>.minutes, example: <span class="n">nil</span>, validation: <span class="n">nil</span>}, {decl: secret_key : <span class="t">String</span>, example: <span class="n">nil</span>, validation: <span class="n">nil</span>}] <span class="k">of</span> <span class="t">Nil</span></code>
+        <strong>HABITAT_SETTINGS</strong> = <code>[{decl: encryption_cost : <span class="t">Int32</span> <span class="o">=</span> <span class="t">Crypto</span><span class="t">::</span><span class="t">Bcrypt</span><span class="t">::</span><span class="t">DEFAULT_COST</span>, example: <span class="n">nil</span>, validation: <span class="n">nil</span>}, {decl: default_password_reset_time_limit : <span class="t">Time</span><span class="t">::</span><span class="t">Span</span> <span class="o">=</span> <span class="n">15</span>.minutes, example: <span class="n">nil</span>, validation: <span class="n">nil</span>}, {decl: secret_key : <span class="t">String</span>, example: <span class="n">nil</span>, validation: <span class="n">:validate_length</span>}] <span class="k">of</span> <span class="t">Nil</span></code>
       </dt>
       
     
@@ -290,6 +290,11 @@ configuration.</p>
         
       </li>
     
+      <li class="entry-summary">
+        <a href="#validate_length(value:String)-class-method" class="signature"><strong>.validate_length</strong>(value : String)</a>
+        
+      </li>
+    
   </ul>
 
 
@@ -362,7 +367,7 @@ configuration.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -394,7 +399,7 @@ configuration.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -418,7 +423,7 @@ configuration.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -441,7 +446,7 @@ configuration.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -462,7 +467,7 @@ configuration.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L124" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L139" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -488,7 +493,7 @@ page before sign in.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -515,7 +520,7 @@ to redirect them back.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -531,7 +536,7 @@ to redirect them back.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -557,7 +562,23 @@ expired.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L138" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L153" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="validate_length(value:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>validate_length</strong>(value : String)
+
+        <a class="method-permalink" href="#validate_length(value:String)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -585,7 +606,7 @@ expired.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/fa869f223d1db0aade487cf36241fd196c4fa827/src/authentic.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/76e76aabb7d8f5d5145aeaba45ea91a213411115/src/authentic.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
