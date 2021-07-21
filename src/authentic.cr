@@ -34,7 +34,22 @@ module Authentic
   Habitat.create do
     setting encryption_cost : Int32 = Crypto::Bcrypt::DEFAULT_COST
     setting default_password_reset_time_limit : Time::Span = 15.minutes
-    setting secret_key : String
+    setting secret_key : String, validation: :validate_length
+  end
+
+  def self.validate_length(value : String)
+    if value.bytesize != 32
+      Habitat.raise_validation_error <<-ERROR
+
+      Authentic secret_key setting must be 32 bytes long.
+
+      Try this...
+
+        ▸ Generate a new key with `lucky gen.secret_key`
+        ▸ Set the secret_key value in your Authentic.configure block
+
+      ERROR
+    end
   end
 
   # Remember the originally requested path if it is a GET
@@ -44,7 +59,7 @@ module Authentic
   #
   # Once the user signs in call `Authentic.redirect_to_originally_requested_path`
   # to redirect them back.
-  def self.remember_requested_path(action : Lucky::Action) : Void
+  def self.remember_requested_path(action : Lucky::Action) : Nil
     if action.request.method.upcase == "GET"
       action.session.set(:return_to, action.request.resource)
     end
@@ -101,7 +116,7 @@ module Authentic
   def self.copy_and_encrypt(
     from password_field : Avram::Attribute | Avram::PermittedAttribute,
     to encrypted_password_field : Avram::Attribute | Avram::PermittedAttribute
-  ) : Void
+  ) : Nil
     password_field.value.try do |value|
       encrypted_password_field.value = generate_encrypted_password(value)
     end
@@ -142,12 +157,5 @@ module Authentic
     encryptor = Lucky::MessageEncryptor.new(secret: settings.secret_key)
     user_id, expiration_in_ms = String.new(encryptor.verify_and_decrypt(token)).split(":")
     Time.utc.to_unix_ms <= expiration_in_ms.to_i64 && user_id.to_s == authenticatable.id.to_s
-  end
-
-  private def self.secret_key
-    if settings.secret_key.length != 32
-      raise "Authentic secret_key must be 32 characters long"
-    end
-    settings.secret_key
   end
 end

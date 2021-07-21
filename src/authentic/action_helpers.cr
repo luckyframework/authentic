@@ -3,12 +3,12 @@ module Authentic::ActionHelpers(T)
   SIGN_IN_KEY = "user_id"
 
   # Signs a user in using the browser session.
-  def sign_in(authenticatable : T) : Void
+  def sign_in(authenticatable : T) : Nil
     session.set(SIGN_IN_KEY, authenticatable.id.to_s)
   end
 
   # Sign the user out by clearing the session.
-  def sign_out : Void
+  def sign_out : Nil
     session.clear
   end
 
