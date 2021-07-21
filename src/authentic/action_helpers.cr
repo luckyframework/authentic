@@ -28,7 +28,7 @@ module Authentic::ActionHelpers(T)
   #
   # This method should *not* be overridden. If you want to require a current user,
   # override the `current_user` method (note no `?`).
-  def current_user? : T?
+  memoize def current_user? : T?
     id = session.get?(SIGN_IN_KEY)
     if id
       find_current_user(id)
