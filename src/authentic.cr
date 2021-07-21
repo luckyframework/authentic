@@ -158,8 +158,4 @@ module Authentic
     user_id, expiration_in_ms = String.new(encryptor.verify_and_decrypt(token)).split(":")
     Time.utc.to_unix_ms <= expiration_in_ms.to_i64 && user_id.to_s == authenticatable.id.to_s
   end
-
-  private def self.secret_key
-    {% raise "Authentic.secret_key has been removed. Use Authentic.settings.secret_key instead." %}
-  end
 end
