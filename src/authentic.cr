@@ -38,10 +38,11 @@ module Authentic
   end
 
   def self.validate_length(value : String)
-    if value.bytesize != 32
+    if value.bytesize < 32
       Habitat.raise_validation_error <<-ERROR
 
-      Authentic secret_key setting must be 32 bytes long.
+      Authentic secret_key setting must be at least 32 bytes long,
+      but got #{value.bytesize} bytes '#{value}'.
 
       Try this...
 
