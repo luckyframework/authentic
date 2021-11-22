@@ -1,6 +1,5 @@
 require "habitat"
 require "lucky"
-require "avram"
 require "crypto/bcrypt/password"
 require "./authentic/*"
 

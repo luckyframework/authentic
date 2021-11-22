@@ -1,5 +1,3 @@
-require "avram"
-
 database = "authentic_test"
 
 class AppDatabase < Avram::Database
