@@ -1,5 +1,4 @@
 require "spec"
-require "avram"
 require "../config"
 require "../src/authentic"
 require "./support/**"
