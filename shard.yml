@@ -1,5 +1,5 @@
 name: authentic
-version: 0.8.1
+version: 0.8.2
 
 authors:
   - Paul Smith <paulcsmith0218@gmail.com>
@@ -11,10 +11,10 @@ license: MIT
 dependencies:
   lucky:
     github: luckyframework/lucky
-    version: ~> 0.29.0
+    version: ~> 0.30.0
   avram:
     github: luckyframework/avram
-    version: ~> 0.22.0
+    version: ~> 0.23.0
   habitat:
     github: luckyframework/habitat
     version: ~> 0.4.7
