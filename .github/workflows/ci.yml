@@ -2,7 +2,7 @@ name: Authentic CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
     branches: "*"
 
@@ -10,20 +10,13 @@ jobs:
   check_format:
     strategy:
       fail-fast: false
-      matrix:
-        crystal_version:
-          - 1.0.0
-          - 1.1.0
-          - 1.2.0
-        experimental:
-          - false
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
+    continue-on-error: false
     steps:
       - uses: actions/checkout@v1
       - uses: crystal-lang/install-crystal@v1
         with:
-          crystal: ${{matrix.crystal_version}}
+          crystal: 1.3.2
       - name: Install shards
         run: shards install
       - name: Format
@@ -36,15 +29,14 @@ jobs:
       matrix:
         crystal_version:
           - 1.0.0
-          - 1.1.0
-          - 1.2.0
+          - latest
         experimental:
           - false
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
     services:
       postgres:
-        image: postgres:10-alpine
+        image: postgres:13-alpine
         env:
           POSTGRES_USER: lucky
           POSTGRES_PASSWORD: developer
