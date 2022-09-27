@@ -43,6 +43,18 @@ describe Authentic::ActionHelpers do
 
     action.current_user.should be_nil
   end
+
+  it "allows for an alternate signin key" do
+    Authentic.temp_config(sign_in_key: "admin_id") do
+      action = build_action
+      authenticatable = FakeAuthenticatable.new(id: 123)
+      action.session.get?("admin_id").should be_nil
+
+      action.sign_in(authenticatable)
+
+      action.session.get?("admin_id").should eq "123"
+    end
+  end
 end
 
 private def empty_params
