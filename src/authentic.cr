@@ -27,6 +27,9 @@ require "./authentic/*"
 #
 #   # Optional: `default_password_reset_time_limit` defaults to 15.minutes
 #   settings.default_password_reset_time_limit = 1.day
+#
+#   # Optional: The session key used during sign in/out. Default id `user_id`
+#   settings.sign_in_key = "admin_code"
 # end
 # ```
 module Authentic
@@ -34,6 +37,7 @@ module Authentic
     setting encryption_cost : Int32 = Crypto::Bcrypt::DEFAULT_COST
     setting default_password_reset_time_limit : Time::Span = 15.minutes
     setting secret_key : String, validation: :validate_length
+    setting sign_in_key : String = "user_id", example: "user_id"
   end
 
   def self.validate_length(value : String)

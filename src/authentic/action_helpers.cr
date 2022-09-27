@@ -1,10 +1,8 @@
 # Helpers methods for Lucky actions
 module Authentic::ActionHelpers(T)
-  SIGN_IN_KEY = "user_id"
-
   # Signs a user in using the browser session.
   def sign_in(authenticatable : T) : Nil
-    session.set(SIGN_IN_KEY, authenticatable.id.to_s)
+    session.set(Authentic.settings.sign_in_key, authenticatable.id.to_s)
   end
 
   # Sign the user out by clearing the session.
@@ -33,7 +31,7 @@ module Authentic::ActionHelpers(T)
   # override the `current_user` method (note no `?`).
   def current_user? : T?
     @__current_user ||= begin
-      id = session.get?(SIGN_IN_KEY)
+      id = session.get?(Authentic.settings.sign_in_key)
       if id
         find_current_user(id)
       end
