@@ -11,10 +11,10 @@ license: MIT
 dependencies:
   lucky:
     github: luckyframework/lucky
-    version: ~> 1.0.0
+    version: ">= 1.0.0-rc1"
   avram:
     github: luckyframework/avram
-    version: ~> 1.0.0
+    version: ">= 1.0.0-rc1"
   habitat:
     github: luckyframework/habitat
     version: ~> 0.4.7
