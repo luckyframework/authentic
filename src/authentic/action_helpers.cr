@@ -31,12 +31,11 @@ module Authentic::ActionHelpers(T)
   # override the `current_user` method (note no `?`).
   def current_user? : T?
     @__current_user ||= begin
-      id = session.get?(Authentic.settings.sign_in_key)
-      if id
+      if id = session.get?(Authentic.settings.sign_in_key)
         find_current_user(id)
       end
     end
   end
 
-  abstract def find_current_user(id) : T?
+  abstract def find_current_user(id : String | T::PrimaryKeyType) : T?
 end

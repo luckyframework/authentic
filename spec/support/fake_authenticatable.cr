@@ -1,5 +1,6 @@
 class FakeAuthenticatable
   include Authentic::PasswordAuthenticatable
+  alias PrimaryKeyType = Int32
 
   getter id : Int32
   getter encrypted_password : String?
