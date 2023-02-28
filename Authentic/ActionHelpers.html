@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.4.1">
+<meta name="generator" content="Crystal Docs 1.6.2">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="authentic">
 
@@ -127,7 +127,7 @@
   </h2>
   
     
-      <a href="https://github.com/luckyframework/authentic/blob/c2a7da856012e804ef49054f2cf1eab7b6973960/src/authentic/action_helpers.cr#L2" target="_blank">
+      <a href="https://github.com/luckyframework/authentic/blob/2d3c63416e7a160e28750817ef03957df5e24614/src/authentic/action_helpers.cr#L2" target="_blank">
         authentic/action_helpers.cr
       </a>
     
@@ -153,21 +153,21 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#current_user%3AT%3F-instance-method" class="signature"><strong>#current_user</strong> : T?</a>
+        <a href="#current_user%3AT%7CNil-instance-method" class="signature"><strong>#current_user</strong> : T | Nil</a>
         
           <div class="summary"><p>Returns the signed in user if signed in, otherwise returns <code>nil</code></p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#current_user%3F%3AT%3F-instance-method" class="signature"><strong>#current_user?</strong> : T?</a>
+        <a href="#current_user%3F%3AT%7CNil-instance-method" class="signature"><strong>#current_user?</strong> : T | Nil</a>
         
           <div class="summary"><p>Return the signed in user if signed in, otherwise returns <code>nil</code></p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#find_current_user%28id%29%3AT%3F-instance-method" class="signature"><strong>#find_current_user</strong>(id) : T?</a>
+        <a href="#find_current_user%28id%3AString%7CT%3A%3APrimaryKeyType%29%3AT%7CNil-instance-method" class="signature"><strong>#find_current_user</strong>(id : String | T::PrimaryKeyType) : T | Nil</a>
         
       </li>
     
@@ -209,12 +209,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="current_user:T?-instance-method">
+    <div class="entry-detail" id="current_user:T|Nil-instance-method">
       <div class="signature">
         
-        def <strong>current_user</strong> : T?
+        def <strong>current_user</strong> : T | Nil
 
-        <a class="method-permalink" href="#current_user%3AT%3F-instance-method">#</a>
+        <a class="method-permalink" href="#current_user%3AT%7CNil-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -230,46 +230,46 @@ Lucky project.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/c2a7da856012e804ef49054f2cf1eab7b6973960/src/authentic/action_helpers.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/2d3c63416e7a160e28750817ef03957df5e24614/src/authentic/action_helpers.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="current_user?:T?-instance-method">
+    <div class="entry-detail" id="current_user?:T|Nil-instance-method">
       <div class="signature">
         
-        def <strong>current_user?</strong> : T?
+        def <strong>current_user?</strong> : T | Nil
 
-        <a class="method-permalink" href="#current_user%3F%3AT%3F-instance-method">#</a>
+        <a class="method-permalink" href="#current_user%3F%3AT%7CNil-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Return the signed in user if signed in, otherwise returns <code>nil</code></p>
 <p>This method should <em>not</em> be overridden. If you want to require a current user,
-override the <code><a href="../Authentic/ActionHelpers.html#current_user%3AT%3F-instance-method">#current_user</a></code> method (note no <code>?</code>).</p>
+override the <code><a href="../Authentic/ActionHelpers.html#current_user%3AT%7CNil-instance-method">#current_user</a></code> method (note no <code>?</code>).</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/c2a7da856012e804ef49054f2cf1eab7b6973960/src/authentic/action_helpers.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/2d3c63416e7a160e28750817ef03957df5e24614/src/authentic/action_helpers.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="find_current_user(id):T?-instance-method">
+    <div class="entry-detail" id="find_current_user(id:String|T::PrimaryKeyType):T|Nil-instance-method">
       <div class="signature">
         abstract 
-        def <strong>find_current_user</strong>(id) : T?
+        def <strong>find_current_user</strong>(id : String | T::PrimaryKeyType) : T | Nil
 
-        <a class="method-permalink" href="#find_current_user%28id%29%3AT%3F-instance-method">#</a>
+        <a class="method-permalink" href="#find_current_user%28id%3AString%7CT%3A%3APrimaryKeyType%29%3AT%7CNil-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/c2a7da856012e804ef49054f2cf1eab7b6973960/src/authentic/action_helpers.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/2d3c63416e7a160e28750817ef03957df5e24614/src/authentic/action_helpers.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -290,7 +290,7 @@ override the <code><a href="../Authentic/ActionHelpers.html#current_user%3AT%3F-
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/c2a7da856012e804ef49054f2cf1eab7b6973960/src/authentic/action_helpers.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/2d3c63416e7a160e28750817ef03957df5e24614/src/authentic/action_helpers.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -311,7 +311,7 @@ override the <code><a href="../Authentic/ActionHelpers.html#current_user%3AT%3F-
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/authentic/blob/c2a7da856012e804ef49054f2cf1eab7b6973960/src/authentic/action_helpers.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/authentic/blob/2d3c63416e7a160e28750817ef03957df5e24614/src/authentic/action_helpers.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
