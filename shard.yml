@@ -4,20 +4,20 @@ version: 1.0.0
 authors:
   - Paul Smith <paulcsmith0218@gmail.com>
 
-crystal: ">= 1.6.0"
+crystal: ~> 1.6
 
 license: MIT
 
 dependencies:
   lucky:
     github: luckyframework/lucky
-    version: ">= 1.0.0"
+    version: ">= 1.0, < 1.1"
   avram:
     github: luckyframework/avram
-    version: ">= 1.0.0"
+    version: ">= 1.0, < 1.1"
   habitat:
     github: luckyframework/habitat
-    version: ~> 0.4.7
+    version: ">= 0.4.7, < 0.5"
 
 development_dependencies:
   ameba:
