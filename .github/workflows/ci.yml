@@ -40,13 +40,6 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
     steps:
       - uses: actions/checkout@v4
-      - name: Setup PostgreSQL v${{ matrix.postgres_version }}
-        uses: ikalnytskyi/action-setup-postgres@v6
-        with:
-          username: lucky
-          password: developer
-          port: 5432
-          postgres-version: ${{ matrix.postgres_version }}
       - uses: crystal-lang/install-crystal@v1
         with:
           crystal: ${{matrix.crystal_version}}
@@ -54,5 +47,3 @@ jobs:
         run: shards install --skip-postinstall --skip-executables
       - name: Run tests
         run: crystal spec
-        env:
-          DATABASE_URL: postgres://lucky:developer@localhost:5432/authentic_test

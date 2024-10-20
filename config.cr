@@ -1,19 +1,9 @@
-database = "authentic_test"
-
 class AppDatabase < Avram::Database
 end
 
+# The specs for this shard don't actually make DB queries
 AppDatabase.configure do |settings|
-  if ENV["DATABASE_URL"]?
-    settings.credentials = Avram::Credentials.parse(ENV["DATABASE_URL"])
-  else
-    settings.credentials = Avram::Credentials.new(
-      database: database,
-      hostname: "db",
-      username: "lucky",
-      password: "developer"
-    )
-  end
+  settings.credentials = Avram::Credentials.parse("postgres://fake:password@localhost:5432/not_used")
 end
 
 Avram.configure do |settings|
