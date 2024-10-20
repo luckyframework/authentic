@@ -45,6 +45,7 @@ jobs:
         with:
           username: lucky
           password: developer
+          database: authentic_test
           port: 5432
           postgres-version: ${{ matrix.postgres_version }}
       - uses: crystal-lang/install-crystal@v1
