@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: false
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - uses: crystal-lang/install-crystal@v1
         with:
-          crystal: 1.4.1
+          crystal: latest
       - name: Install shards
         run: shards install
       - name: Format
@@ -27,30 +27,31 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        os:
+          - ubuntu-latest
+        postgres_version:
+          - 16
         crystal_version:
-          - 1.4.0
+          - 1.10.0
           - latest
         experimental:
           - false
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
-    services:
-      postgres:
-        image: postgres:13-alpine
-        env:
-          POSTGRES_USER: lucky
-          POSTGRES_PASSWORD: developer
-        ports:
-          - 5432:5432
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: Setup PostgreSQL v${{ matrix.postgres_version }}
+        uses: ikalnytskyi/action-setup-postgres@v6
+        with:
+          username: lucky
+          password: developer
+          port: 5432
+          postgres-version: ${{ matrix.postgres_version }}
       - uses: crystal-lang/install-crystal@v1
         with:
           crystal: ${{matrix.crystal_version}}
       - name: Install shards
-        run: shards install
+        run: shards install --skip-postinstall --skip-executables
       - name: Setup Database
         run: crystal tasks.cr db.setup
         env:

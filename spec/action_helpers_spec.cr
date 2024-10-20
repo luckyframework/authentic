@@ -35,7 +35,7 @@ describe Authentic::ActionHelpers do
     action.sign_in(FakeAuthenticatable.new(id: 123))
 
     action.current_user.should be_a FakeAuthenticatable
-    action.current_user.not_nil!.id.should eq 123
+    action.current_user.as(FakeAuthenticatable).id.should eq 123
   end
 
   it "returns nil if user is not signed in?" do
