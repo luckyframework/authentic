@@ -95,7 +95,7 @@ describe Authentic do
 
     Authentic.copy_and_encrypt from: password, to: encrypted_password
 
-    encrypted_password.value.not_nil!.size.should eq 60
+    encrypted_password.value.as(String).size.should eq 60
   end
 
   it "can create an encrypted password" do
