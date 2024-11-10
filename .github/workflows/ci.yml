@@ -36,6 +36,11 @@ jobs:
           - latest
         experimental:
           - false
+        include:
+          - os: windows-latest
+            crystal_version: latest
+            postgres_version: 16
+            experimental: true
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
     steps:

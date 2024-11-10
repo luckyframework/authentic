@@ -1,4 +1,4 @@
-FROM crystallang/crystal:1.4.1
+FROM crystallang/crystal:1.14.0
 
 RUN apt-get update
 RUN apt-get install -y libgconf-2-4 \
