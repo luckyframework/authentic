@@ -1,3 +1,3 @@
 module Authentic
-  VERSION = "1.0.1"
+  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
 end
