@@ -3,7 +3,7 @@ class ContextHelper
 
   def initialize(
     @path : String = "/",
-    @method : String = "GET"
+    @method : String = "GET",
   )
   end
 

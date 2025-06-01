@@ -77,7 +77,7 @@ module Authentic
   # page before sign in.
   def self.redirect_to_originally_requested_path(
     action : Lucky::Action,
-    fallback : Lucky::Action.class | Lucky::RouteHelper
+    fallback : Lucky::Action.class | Lucky::RouteHelper,
   ) : Lucky::Response
     return_to = action.session.get?(:return_to)
     action.session.delete(:return_to)
@@ -92,7 +92,7 @@ module Authentic
   # ```
   def self.correct_password?(
     authenticatable : Authentic::PasswordAuthenticatable,
-    password_value : String
+    password_value : String,
   ) : Bool
     encrypted_password = authenticatable.encrypted_password
 
@@ -119,7 +119,7 @@ module Authentic
   # ```
   def self.copy_and_encrypt(
     from password_field : Avram::Attribute | Avram::PermittedAttribute,
-    to encrypted_password_field : Avram::Attribute | Avram::PermittedAttribute
+    to encrypted_password_field : Avram::Attribute | Avram::PermittedAttribute,
   ) : Nil
     password_field.value.try do |value|
       encrypted_password_field.value = generate_encrypted_password(value)
@@ -131,7 +131,7 @@ module Authentic
   # By default it uses Bcrypt to encrypt the password.
   def self.generate_encrypted_password(
     password_value : String,
-    encryptor = Crypto::Bcrypt::Password
+    encryptor = Crypto::Bcrypt::Password,
   ) : String
     encryptor.create(
       password_value,
@@ -142,7 +142,7 @@ module Authentic
   # Generates a password reset token
   def self.generate_password_reset_token(
     authenticatable : Authentic::PasswordAuthenticatable,
-    expires_in : Time::Span = Authentic.settings.default_password_reset_time_limit
+    expires_in : Time::Span = Authentic.settings.default_password_reset_time_limit,
   ) : String
     encryptor = Lucky::MessageEncryptor.new(secret: settings.secret_key)
     encryptor.encrypt_and_sign("#{authenticatable.id}:#{expires_in.from_now.to_unix_ms}")
@@ -156,7 +156,7 @@ module Authentic
   # To generate a token see `Authentic.generate_password_reset_token`
   def self.valid_password_reset_token?(
     authenticatable : Authentic::PasswordAuthenticatable,
-    token : String
+    token : String,
   ) : Bool
     encryptor = Lucky::MessageEncryptor.new(secret: settings.secret_key)
     user_id, expiration_in_ms = String.new(encryptor.verify_and_decrypt(token)).split(":")
